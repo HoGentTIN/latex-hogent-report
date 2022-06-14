@@ -337,7 +337,7 @@
         not running XeLaTeX/LuaLaTeX: using native fonts}
 
     \RequirePackage[defaultfam,tabular,lining]{montserrat}
-    \RequirePackage{inconsolata}
+    \RequirePackage{firamath}
     \RequirePackage{sfmath} % Fallback sans serif math font
 
     \RequirePackage[T1]{fontenc}
@@ -403,13 +403,13 @@
             BoldItalicFont= *-BoldItalic]
     }
 
-    \IfFontExistsTF{Inconsolata}{%
-            \setmonofont{inconsolata}[StylisticSet={1,3}]
+    \IfFontExistsTF{Fira Code}{%
+            \setmonofont{Fira Code}[StylisticSet={1,3}]
             %% Shapely l, upright quotes, striked zeroes
 
     }{%
-            \setmonofont{Inconsolata}[
-                Path = fonts/Inconsolata/,
+            \setmonofont{Fira Code}[
+                Path = fonts/FiraCode/,
                 Extension = .otf,
                 UprightFont = *-Regular,
                 BoldFont=*-Bold,
