@@ -1,16 +1,10 @@
 % TODO: Replace the option fbo with your own faculty!
-%% Valid entries are fbo, fmw, fnt and soa, see README.md for more information
+%% Valid entries are dbo, dbt, dgz, dit, dlo, dog, dsa, soa
 \documentclass[table,twoside,english,dit,thesis]{hogentreport}
 %% epsfig is required for the sample content in sample.tex
 % TODO: Remove this if you don't need to load .eps figure.
 \usepackage{epsfig}
 \graphicspath{{sample/}{graphics/}} % TODO: Remove the sample/ directory
-
-\usepackage{makeidx}                     %% For creating indexes
-\usepackage{url}                         %% For email addresses, hyperlinks, etc
-\usepackage{xspace}                      %% Adds spaces after a command
-\usepackage{listings}                    %% For literal text and code
-\usepackage{microtype}                   %% Makes text easier on the eyes
 
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
@@ -40,28 +34,18 @@
     texcl=false,
 }
 
-\usepackage{csquotes}                    %% For advanced inline/display quotes
-\usepackage[nottoc]{tocbibind}           %% Adds the bibliography/index to ToC
-\usepackage{eurosym}                     %% For the euro symbol
-\usepackage{textcomp}                    %% Some special characters
-
 %% Settings:
 % TODO: Replace this with your own information
 \author{Ernst Aarden}
 \supervisor{Dhr. F. Van Houte}
 \cosupervisor{Mevr. S. Beeckman}
 \title[The Internet applied to the refinement of Scheme]%
-    {Exploration of the\newline  Location-Identity Split}
+    {Exploration of the\\ Location-Identity Split}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
 \degreesought{Professional Bachelor of Applied Computer Science}
 \partialthesis{false} %% To display 'in partial fulfilment'
 %\institution{Internshipcompany BVBA.}
-
-
-\usepackage{pdfpages}                    %% To add pages from PDF documents
-\usepackage{standalone}                  %% Compile TeX/TikZ pictures standalone
-\usepackage{wrapfig}                     %% For wrapping of figures
 
 %% Add global exceptions to the hyphenation here
 \hyphenation{back-slash}
@@ -69,22 +53,6 @@
 %% The bibliography (style and settings are  found in hogentthesis.cls)
 \addbibresource{bibliography.bib}        %% Biblatex bibliography file
 \defbibheading{bibempty}{}
-\usepackage{enumitem}
-\usepackage{enumitem}                    %% Make changes to the layout of lists
-\usepackage{tcolorbox}                   %% For nice colored box layouts
-\usepackage{printlen}
-%\setlist{noitemsep}
-%\setlist[enumerate]{itemsep=1pt}
-%\setlist[itemize]{itemsep=1pt}
-%\setlist{parsep=\topskip}
-%\setlist{topsep=\topskip}
-%\setlist{partopsep=\topskip}
-
-\usepackage{tabularx}                    %% Other table packages: tabu, tabulary
-\usepackage{booktabs}                    %% Better tables
-\usepackage{rotating}                    %% Allows... rotation
-\usepackage{makecell}                    %% Useful for multi-line table content
-\captionsetup[figure]{labelformat=parens, labelsep=newline}
 
 %% Prevent empty pages for right-handed chapter starts in twoside mode
 \renewcommand{\cleardoublepage}{\clearpage}
@@ -109,16 +77,15 @@
 }{}
 \hypersetup{pageanchor=true}
 
-
 \tableofcontents
 \listoffigures
 
-\mainmatter
+\mainmatter{}
 
 % TODO: Remove the sample and add your own chapters
 \input{sample}
 
-\backmatter
+\backmatter{}
 
 \setlength\bibitemsep{2pt} %% Add Some space between the bibliograpy entries
 \printbibliography[heading=bibintoc]
