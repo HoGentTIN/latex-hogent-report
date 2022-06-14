@@ -282,11 +282,11 @@
 \or
     \colorlet{title}{hogent-pink}% dgz
 \or
-    \colorlet{title}{hogent-ochre}% dit
+    \colorlet{title}{hogent-orange}% dit
 \or
     \colorlet{title}{hogent-blue}% dlo
 \or
-    \colorlet{title}{hogent-fnt}% dog
+    \colorlet{title}{hogent-lightgreen}% dog
 \or
     \colorlet{title}{hogent-grey}% dsa
 \else
