@@ -494,20 +494,19 @@
     
     \if@thesis
       \begingroup
-        \begin{tabular}{ll}
           \IfLanguageName{dutch}{%
-            \textbf{Promotor:}}{\textbf{Supervisor:}} & \@supervisor\\
+            \textbf{Promotor:}}{\textbf{Supervisor:}} \@supervisor\\
           \ifx\@cosupervisor\@empty\else
             \IfLanguageName{dutch}{%
               \textbf{Co-promotor:}}{%
-              \textbf{Co-Supervisor:}} & \@cosupervisor\\
+              \textbf{Co-Supervisor:}} \@cosupervisor\\
           \fi
           \ifx\@institution\@empty\else
             \IfLanguageName{dutch}{%
-              \textbf{Instelling:}}{\textbf{Institution:}} & \@institution\\
+              \textbf{Instelling:}}{\textbf{Institution:}} \@institution\\
           \fi
           \IfLanguageName{dutch}{%
-            \textbf{Academiejaar:}}{\textbf{Academic year:}} & \@academicyear\\
+            \textbf{Academiejaar:}}{\textbf{Academic year:}} \@academicyear\\
             \textbf{%
               \ifcase\@examperiod
               \or
@@ -517,14 +516,11 @@
               \else
                 \IfLanguageName{dutch}{Derde}{Third}
               \fi
-          \IfLanguageName{dutch}{examenperiode}{exam period} } & \\
-        \end{tabular}
+          \IfLanguageName{dutch}{examenperiode}{exam period} } \\
       \endgroup
     \else
-      \begin{tabular}{ll}
         \IfLanguageName{dutch}{%
-          \textbf{Academiejaar:}}{\textbf{Academic year:}} & \@academicyear\\
-      \end{tabular}     
+          \textbf{Academiejaar:}}{\textbf{Academic year:}} \@academicyear\\
     \fi
     
     %% Insert the HoGent logo
