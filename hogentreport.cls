@@ -31,6 +31,8 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 
+\RequirePackage{booktabs}
+
 %% Ensure the variables can be checked with \ifx\@variable\@empty
 \let\@author\@empty
 \let\@title\@empty
@@ -41,8 +43,8 @@
 \let\@examperiod\@empty
 \let\@degreesought\@empty
 
-\let\@faculty\@empty
-\let\@faculty@nr\@empty
+\let\@department\@empty
+\let\@department@nr\@empty
 
 \newcommand{\supervisor}[1]{\def\@supervisor{#1}}
 \newcommand{\cosupervisor}[1]{\def\@cosupervisor{#1}}
@@ -51,17 +53,21 @@
 \newcommand{\examperiod}[1]{\def\@examperiod{#1}}
 \newcommand{\degreesought}[1]{\def\@degreesought{#1}}
 
-\define@choicekey*+{hogentreport}{faculty}[\@faculty\@faculty@nr]
-{fbo,fmw,fnt,soa}{}{%
-    \ClassError{\@classname}{The faculty parameter is undefined}
-    {One of the following options for the faculty must be added to the class%
-        options: fbo, fmw, fnt or soa}}
+\define@choicekey*+{hogentreport}{department}[\@department\@department@nr]
+{dbo,dbt,dgz,dit,dlo,dog,dsa,soa}{}{%
+    \ClassError{\@classname}{The department parameter is undefined}
+    {One of the following options for the department must be added to the class%
+        options: dbo, dbt, dgz, dit, dlo, dog, dsa, soa}}
 
-\def\@DeclareFaculty#1{\DeclareOptionX{#1}{\setkeys{hogentreport}{faculty=#1}}}
-\@DeclareFaculty{fbo}
-\@DeclareFaculty{fmw}
-\@DeclareFaculty{fnt}
-\@DeclareFaculty{soa}
+\def\@DeclareDept#1{\DeclareOptionX{#1}{\setkeys{hogentreport}{department=#1}}}
+\@DeclareDept{dbo}
+\@DeclareDept{dbt}
+\@DeclareDept{dgz}
+\@DeclareDept{dit}
+\@DeclareDept{dlo}
+\@DeclareDept{dog}
+\@DeclareDept{dsa}
+\@DeclareDept{soa}
 
 %% Redefine the title command to accept an optional subtitle
 \renewcommand*\title[2][]{%
@@ -254,35 +260,55 @@
 %\definecolor{hogent-darkgrey}{RGB}{150,150,150}
 %\definecolor{hogent-altyellow}{RGB}{255,218,0}
 
-%% Setting of the faculty text and title color based on the class option
-\ifx\@faculty\@empty{%
-    \ClassError{\@classname}{Faculty parameter is undefined!}%
+%% Setting of the department text and title color based on the class option
+\ifx\@department\@empty{%
+    \ClassError{\@classname}{Department parameter is undefined!}%
     {One of the following options must be added to the class options:%
-        'fbo', 'fmw', 'fnt' or 'soa'}%
+        dbo, dgz, dit, dlo, dog, dsa, soa}%
 }\fi
 
-\ifcase\@faculty@nr%
-\relax %fbo
-    \colorlet{title}{hogent-fbo}%
-\or %fmw
-    \colorlet{title}{hogent-fmw}%
-\or %fnt
-    \colorlet{title}{hogent-fnt}%
-\else %soa
-    \colorlet{title}{hogent-soa}%
+\ifcase\@department@nr%
+\relax
+    \colorlet{title}{hogent-purple}% dbo
+\or
+    \colorlet{title}{hogent-darkgreen}% dbt
+\or
+    \colorlet{title}{hogent-pink}% dgz
+\or
+    \colorlet{title}{hogent-ochre}% dit
+\or
+    \colorlet{title}{hogent-blue}% dlo
+\or
+    \colorlet{title}{hogent-fnt}% dog
+\or
+    \colorlet{title}{hogent-grey}% dsa
+\else
+    \colorlet{title}{black}% soa
 \fi
 
-\newcommand{\@facultyname}{%
-    \ifcase\@faculty@nr%
-    \relax %fbo
-        \IfLanguageName{dutch}{Faculteit Bedrijf en Organisatie}%
-            {Faculty of Business and Information Management}%
-    \or %fmw
-        \IfLanguageName{dutch}{Faculteit Mens en Welzijn}%
-            {Faculty of Education, Health and Social Work}
-    \or %fnt
-        \IfLanguageName{dutch}{Faculteit Natuur en Techniek}%
-            {Faculty of Science and Technology}
+\newcommand{\@departmentname}{%
+    \ifcase\@department@nr%
+    \relax %dbo
+        \IfLanguageName{dutch}{Departement Bedrijf en Organisatie}%
+            {School of Business Management}%
+    \or % dbt
+        \IfLanguageName{dutch}{Departement Biowetenschappen en Industriële Technologie}%
+            {School of Bioscience and Industrial Technology}%
+    \or %dgz
+        \IfLanguageName{dutch}{Departement Gezondheidszorg}%
+            {School of Healthcare}
+    \or %dit
+        \IfLanguageName{dutch}{Departement IT en Digitale Innovatie}%
+            {School of IT and Digital Innovation}
+    \or %dlo
+        \IfLanguageName{dutch}{Departement Lerarenopleiding}%
+            {School of Teacher Training}
+    \or %dog
+        \IfLanguageName{dutch}{Departement Omgeving}%
+            {School of Built Environment}
+    \or %dsa
+        \IfLanguageName{dutch}{Departement Sociaal-Agogisch Werk}%
+            {School of Social Welfare}
     \else %soa
         School of Arts%
     \fi
@@ -473,11 +499,6 @@
             \IfLanguageName{dutch}{%
               \textbf{Instelling:}}{\textbf{Institution:}} & \@institution\\
           \fi
-        \end{tabular}
-        
-        \bigskip
-      
-        \begin{tabular}{ll}
           \IfLanguageName{dutch}{%
             \textbf{Academiejaar:}}{\textbf{Academic year:}} & \@academicyear\\
             \textbf{%
@@ -509,7 +530,7 @@
     
     \bigskip
     \begingroup
-      \subtitlefont\bfseries\@facultyname\@addpunct{.}
+      \subtitlefont\bfseries\@departmentname\@addpunct{.}
     \endgroup
     
     \end{titlepage}%
