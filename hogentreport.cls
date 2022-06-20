@@ -22,7 +22,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \def\@classname{hogentreport}
-\ProvidesClass{hogentreport}[2022/06/14 Hogeschool Gent report/thesis class]
+\ProvidesClass{hogentreport}[2022/06/20 Hogeschool Gent report/thesis class]
 
 \RequirePackage{xkeyval}
 \RequirePackage{iflang}
@@ -79,7 +79,7 @@
 %% Check the variables that need to be defined for the title page
 \newcommand{\@checkvariables}{%
 
-    \ifx\@title\@empty{%
+    \ifx\@author\@empty{%
         \ClassError{\@classname}{Author is undefined!}%
         {Use the \author command to define it}
     }\fi
@@ -518,10 +518,15 @@
               \fi
           \IfLanguageName{dutch}{examenperiode}{exam period} } \\
       \endgroup
+      
+      \bigskip
     \else
         \IfLanguageName{dutch}{%
           \textbf{Academiejaar:}}{\textbf{Academic year:}} \@academicyear\\
     \fi
+    \begingroup
+      \subtitlefont\bfseries\@departmentname\@addpunct{.}
+    \endgroup
     
     %% Insert the HoGent logo
     \begin{tikzpicture}[remember picture, overlay]
@@ -530,12 +535,7 @@
         \includegraphics[height=\the\ht\logopart]{hogent_logo}%
       };%
     \end{tikzpicture}
-    
-    \bigskip
-    \begingroup
-      \subtitlefont\bfseries\@departmentname\@addpunct{.}
-    \endgroup
-    
+
     \end{titlepage}%
     
     \thispagestyle{empty}
